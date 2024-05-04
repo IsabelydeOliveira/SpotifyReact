@@ -1,8 +1,32 @@
 
 import { Search, Library } from "lucide-react";
 import  spotifyHeart  from "./imagens/spotifyHeart.png";
+import { useEffect } from "react";
 
 function App() {
+const getMusic = async () =>{
+  const url = 'https://spotify23.p.rapidapi.com/search/?q=%3CREQUIRED%3E&type=multi&offset=0&limit=10&numberOfTopResults=5';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'ec98f1375fmsh1a6b86390cddb43p10d0a9jsn1eb5847216e6',
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+    }
+  };
+  
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+
+}
+ 
+useEffect(()=>{
+  getMusic()
+})
 
   return (
     <div className="bg-zinc-900 h-screen flex flex-col text-zinc-50">
