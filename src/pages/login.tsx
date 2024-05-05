@@ -1,11 +1,9 @@
 import  spotify_logo  from "@/imagens/Spotify_logo.png";
-import { Route } from "react-router-dom";
-// import App from '@/';
 
 function Login() {
-
 const client_id = '3446e2658000467ba30501c7820fbb4f';
-const redirect_uri = 'http://localhost:5173';
+// const client_secret = 'd1a93de64bc44fa9b0c05887332784e6';
+const redirect_uri = 'http://localhost:5173/home';
 const escopes = 
 [
     "playlist-read-private",
@@ -21,7 +19,7 @@ const escopes =
 ];
 
     function handleLogin() {
-    const scope = escopes.join('%20'); // Transforma o array em uma string separada por espaços codificando o espaço como %20
+    const scope = escopes.join('%20'); 
     const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${client_id}&scope=${scope}&redirect_uri=${encodeURIComponent(redirect_uri)}`;
 
     
@@ -29,7 +27,9 @@ const escopes =
     }
 
 
+
   return (
+    
     <div className="flex flex-row">
     <div className="w-[600px] bg-green-500">
         <h2 className="text-white p-20 text-4xl font-bold mt-20">
@@ -42,11 +42,16 @@ const escopes =
        <div className="text-lg font-semibold text-zinc-100 bg-green-500 rounded-full">
        <button className="bg-gree-50 text-white px-10 py-5 text-2xl block mx-[100px] mt-96" onClick={handleLogin}>Entrar</button>
        </div>
-       {/* <Route></Route>         */}
+
+       {/* <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home/>} />
+      </Routes> */}
         </div>
     
     </div>
    </div>
+   
   )
 }
 
